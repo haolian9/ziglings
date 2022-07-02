@@ -20,32 +20,26 @@
 const std = @import("std");
 
 // Please complete the enum!
-const Ops = enum { ??? };
+const Ops = enum { inc, pow, dec };
 
 pub fn main() void {
-    const operations = [_]Ops{
-        Ops.inc,
-        Ops.inc,
-        Ops.inc,
-        Ops.pow,
-        Ops.dec,
-        Ops.dec,
-    };
+    const operations = [_]Ops{ .inc, .inc, .inc, .pow, .dec, .dec };
 
     var current_value: u32 = 0;
 
     for (operations) |op| {
         switch (op) {
-            Ops.inc => {
+            .inc => {
                 current_value += 1;
             },
-            Ops.dec => {
+            .dec => {
                 current_value -= 1;
             },
-            Ops.pow => {
+            .pow => {
                 current_value *= current_value;
             },
             // No "else" needed! Why is that?
+            // cus it's exhausted
         }
 
         std.debug.print("{} ", .{current_value});
